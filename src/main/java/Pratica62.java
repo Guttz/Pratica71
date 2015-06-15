@@ -35,5 +35,5 @@ public class Pratica62 {
         int indice = Collections.binarySearch(ListaOrdenada, new Jogador(1,"David Luiz"), ComparadorDesAs);
         
         System.out.println(ListaOrdenada.get(indice));
-}
+    }
 }

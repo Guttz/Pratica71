@@ -22,4 +22,14 @@ public class Jogador implements Comparable<Jogador> {
     public int compareTo(Jogador jogador) {
         return this.numero - jogador.numero;
     }
+    
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
+    public void setNumero(int numero)
+    {
+        this.numero = numero;
+    }
+    
 }
