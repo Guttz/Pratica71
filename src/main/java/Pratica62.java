@@ -36,3 +36,4 @@ public class Pratica62 {
         
         System.out.println(ListaOrdenada.get(indice));
 }
+}
