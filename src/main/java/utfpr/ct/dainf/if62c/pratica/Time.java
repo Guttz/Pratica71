@@ -8,6 +8,7 @@ package utfpr.ct.dainf.if62c.pratica;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -27,8 +28,8 @@ public class Time {
         jogadores.put(S1, J1);
     }
     
-    public ArrayList<Jogador> ordena(JogadorComparator Comparador){
-        ArrayList<Jogador> ListaOrdenada = new ArrayList<>(jogadores.values());
+    public List<Jogador> ordena(JogadorComparator Comparador){
+        List<Jogador> ListaOrdenada = new ArrayList<>(jogadores.values());
         
         Collections.sort(ListaOrdenada, Comparador);
        

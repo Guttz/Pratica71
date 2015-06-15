@@ -32,7 +32,7 @@ public class JogadorComparator implements Comparator<Jogador> {
     public int compare(Jogador J1, Jogador J2){
        if(numero && numeroAscendente && nomeAscendente){
            if(J1.numero == J2.numero)
-               return J1.nome.compareTo(J2.nome);
+               return J1.nome.compareToIgnoreCase(J2.nome);
             
             else
                return J1.numero - J2.numero;
@@ -40,7 +40,7 @@ public class JogadorComparator implements Comparator<Jogador> {
        
         else if(numero && numeroAscendente){
            if(J1.numero == J2.numero)
-               return -(J1.nome.compareTo(J2.nome));
+               return -(J1.nome.compareToIgnoreCase(J2.nome));
             
             else
                return J1.numero - J2.numero;
@@ -48,34 +48,34 @@ public class JogadorComparator implements Comparator<Jogador> {
        
         else if(numero){
             if(J1.numero == J2.numero)
-               return -(J1.nome.compareTo(J2.nome));
+               return -(J1.nome.compareToIgnoreCase(J2.nome));
             
             else
                return -(J1.numero - J2.numero);
        }
        
         else if(numeroAscendente && nomeAscendente){
-            if( J1.nome.compareTo(J2.nome) == 0)
+            if( J1.nome.compareToIgnoreCase(J2.nome) == 0)
                return J1.numero - J2.numero;
             
             else
-                return J1.nome.compareTo(J2.nome);
+                return J1.nome.compareToIgnoreCase(J2.nome);
        }
        
         else if(numeroAscendente){
-            if( J1.nome.compareTo(J2.nome) == 0)
+            if( J1.nome.compareToIgnoreCase(J2.nome) == 0)
                return J1.numero - J2.numero;
             
             else
-                return -(J1.nome.compareTo(J2.nome));
+                return -(J1.nome.compareToIgnoreCase(J2.nome));
        }
               
         else{
-            if( J1.nome.compareTo(J2.nome) == 0)
+            if( J1.nome.compareToIgnoreCase(J2.nome) == 0)
                return -(J1.numero - J2.numero);
             
             else
-                return -(J1.nome.compareTo(J2.nome));
+                return -(J1.nome.compareToIgnoreCase(J2.nome));
        }
        
     }
