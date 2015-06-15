@@ -28,7 +28,7 @@ public class Time {
     }
     
     public ArrayList<Jogador> ordena(JogadorComparator Comparador){
-        ArrayList<Jogador> ListaOrdenada = new ArrayList<>();
+        ArrayList<Jogador> ListaOrdenada = new ArrayList<>(jogadores.values());
         
         Collections.sort(ListaOrdenada, Comparador);
        
