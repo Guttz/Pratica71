@@ -1,82 +1,70 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package utfpr.ct.dainf.if62c.pratica;
 
 import java.util.Comparator;
 
 /**
- *
- * @author kiqdestro
+ * IF62C Fundamentos de Programação 2
+ * Exercício de programação em Java.
+ * @author Wilson Horstmeyer Bogado <wilson@utfpr.edu.br>
  */
-public class JogadorComparator implements Comparator<Jogador> {
-    boolean numero, numeroAscendente, nomeAscendente;
-    
-    public JogadorComparator(boolean numero, boolean numeroAscendente, boolean nomeAscendente){
-        this.numero = numero;
-        this.numeroAscendente = numeroAscendente;
-        this.nomeAscendente = nomeAscendente;
-    }
-        
-    public JogadorComparator(){
-        numero = true;
-        numeroAscendente = true;
-        nomeAscendente = true;
-    }
-    
+public class JogadorComparator implements Comparator<Jogador>{
 
-    
-    @Override
-    public int compare(Jogador J1, Jogador J2){
-       if(numero && numeroAscendente && nomeAscendente){
-           if(J1.numero == J2.numero)
-               return J1.nome.compareToIgnoreCase(J2.nome);
-            
-            else
-               return J1.numero - J2.numero;
-        }
-       
-        else if(numero && numeroAscendente){
-           if(J1.numero == J2.numero)
-               return -(J1.nome.compareToIgnoreCase(J2.nome));
-            
-            else
-               return J1.numero - J2.numero;
-       }
-       
-        else if(numero){
-            if(J1.numero == J2.numero)
-               return -(J1.nome.compareToIgnoreCase(J2.nome));
-            
-            else
-               return -(J1.numero - J2.numero);
-       }
-       
-        else if(numeroAscendente && nomeAscendente){
-            if( J1.nome.compareToIgnoreCase(J2.nome) == 0)
-               return J1.numero - J2.numero;
-            
-            else
-                return J1.nome.compareToIgnoreCase(J2.nome);
-       }
-       
-        else if(numeroAscendente){
-            if( J1.nome.compareToIgnoreCase(J2.nome) == 0)
-               return J1.numero - J2.numero;
-            
-            else
-                return -(J1.nome.compareToIgnoreCase(J2.nome));
-       }
-              
-        else{
-            if( J1.nome.compareToIgnoreCase(J2.nome) == 0)
-               return -(J1.numero - J2.numero);
-            
-            else
-                return -(J1.nome.compareToIgnoreCase(J2.nome));
-       }
-       
+    private boolean ordNum = true;
+    private int multNum = 1;
+    private int multNome = 1;
+
+    public JogadorComparator() {
     }
+
+    public JogadorComparator(boolean ordNum, boolean numAsc, boolean nomeAsc) {
+        this.ordNum = ordNum;
+        this.multNum = numAsc ? 1 : -1;
+        this.multNome = nomeAsc ? 1 : -1;
+    }
+
+    public boolean isOrdNum() {
+        return ordNum;
+    }
+
+    public void setOrdNum(boolean ordNum) {
+        this.ordNum = ordNum;
+    }
+
+    public boolean isNumAsc() {
+        return multNum == 1;
+    }
+
+    public void setNumAsc(boolean numAsc) {
+        this.multNum = numAsc ? 1 : -1;
+    }
+
+    public boolean getNomeAsc() {
+        return multNome == 1;
+    }
+
+    public void setNomeAsc(boolean nomeAsc) {
+        this.multNome = nomeAsc ? 1 : -1;
+    }
+
+    private int comparaNumero(Jogador j1, Jogador j2) {
+        return multNum * (j1.getNumero() - j2.getNumero());
+    }
+
+    private int comparaNome(Jogador j1, Jogador j2) {
+        return multNome * j1.getNome().compareTo(j2.getNome());
+    }
+
+    @Override
+    public int compare(Jogador j1, Jogador j2) {
+        int comp;
+        if (ordNum) {
+            comp = comparaNumero(j1, j2);
+            if (comp == 0) comp = comparaNome(j1, j2);
+        } else {
+            comp = comparaNome(j1, j2);
+            if (comp == 0) comp = comparaNumero(j1, j2);
+        }
+        return comp;
+    }
+
 }
